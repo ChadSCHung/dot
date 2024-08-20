@@ -53,7 +53,8 @@ eval "$(fzf --zsh)"
 # --- setup fzf theme ---
 _gen_fzf_default_opts() {
 
-local color00='#32302f'
+# local color00='#32302f'
+local color00='#282828'
 local color01='#3c3836'
 local color02='#504945'
 local color03='#665c54'
