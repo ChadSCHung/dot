@@ -127,23 +127,23 @@ export BAT_THEME=gruvbox-dark
 # ---- Eza (better ls) -----
 
 alias ls="eza --icons=always"
+
 # ---- Zoxide (better cd) ----
+
 eval "$(zoxide init zsh)"
 
 alias cd="z"
-alias md="mkdir -p"
-# Directory
+
+# ---- Directory ----
+
 setopt auto_cd
 setopt auto_pushd
 setopt pushd_ignore_dups
 setopt pushdminus
-
-
 alias -g ...='../..'
 alias -g ....='../../..'
 alias -g .....='../../../..'
 alias -g ......='../../../../..'
-
 alias -- -='cd -'
 alias 1='cd -1'
 alias 2='cd -2'
@@ -154,7 +154,6 @@ alias 6='cd -6'
 alias 7='cd -7'
 alias 8='cd -8'
 alias 9='cd -9'
-
 alias md='mkdir -p'
 alias rd=rmdir
 
@@ -182,8 +181,40 @@ function d () {
   fi
 }
 compdef _dirs d
+export PATH=$PATH:/home/chad/sidecar/scripts
+export PATH=$PATH:/home/chad/.local/bin
+export PATH=$PATH:/home/chad/go/bin
+export EDITOR='nvim'
+typeset -U path
+
+# ---- Lazygit ----
 
 alias lg="lazygit"
+
+# ---- Minicom ----
+
+alias m0="minicom -D /dev/ttyUSB0"
+alias m1="minicom -D /dev/ttyUSB1"
+alias m2="minicom -D /dev/ttyUSB2"
+alias m3="minicom -D /dev/ttyUSB3"
+alias m4="minicom -D /dev/ttyUSB4"
+alias m5="minicom -D /dev/ttyUSB5"
+alias m6="minicom -D /dev/ttyUSB6"
+alias m7="minicom -D /dev/ttyUSB7"
+
+# ----Rcom -----
+
+alias r0="rcom -n -d /dev/ttyUSB0"
+alias r1="rcom -n -d /dev/ttyUSB1"
+alias r2="rcom -n -d /dev/ttyUSB2"
+alias r3="rcom -n -d /dev/ttyUSB3"
+alias r4="rcom -n -d /dev/ttyUSB4"
+alias r5="rcom -n -d /dev/ttyUSB5"
+alias r6="rcom -n -d /dev/ttyUSB6"
+alias r7="rcom -n -d /dev/ttyUSB7"
+
+# ---- OneDrive ----
+export onedrive="/home/chad/OneDrive/"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
