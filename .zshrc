@@ -158,6 +158,22 @@ alias 9='cd -9'
 alias md='mkdir -p'
 alias rd=rmdir
 
+# Function to attach to existing tmux session or start a new one
+tmux_auto() {
+    # Check if there's any tmux session available
+    if tmux ls &> /dev/null; then
+        # Attach to the existing tmux session
+        tmux attach
+    else
+        # Start a new tmux session
+        tmux
+    fi
+}
+
+# Alias to make calling the function easier
+alias tmux='tmux_auto'
+
+
 function d () {
   if [[ -n $1 ]]; then
     dirs "$@"
