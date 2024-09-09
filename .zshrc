@@ -40,9 +40,11 @@ export NVM_DIR="$HOME/.nvm"
 # vim-mode
 bindkey -v
 bindkey -M viins 'jk' vi-cmd-mode
+bindkey -M viins '^p' history-search-backward
+bindkey -M viins '^n' history-search-forward
 
-bindkey -M vicmd 'k' history-search-backward
-bindkey -M vicmd 'j' history-search-forward
+bindkey -M vicmd '^p' history-search-backward
+bindkey -M vicmd '^n' history-search-forward
 bindkey '^Y' autosuggest-accept
 
 # ---- FZF -----
@@ -160,18 +162,22 @@ alias rd=rmdir
 # Function to attach to existing tmux session or start a new one
 tmux_auto() {
     # Check if there's any tmux session available
-    if tmux ls &> /dev/null; then
+    if /usr/local/bin/tmux ls &> /dev/null; then
         # Attach to the existing tmux session
-        tmux attach
+        /usr/local/bin/tmux attach
     else
         # Start a new tmux session
-        tmux
+        /usr/local/bin/tmux
     fi
 }
 
 # Alias to make calling the function easier
 alias tmux='tmux_auto'
 
+# Check if tmux is running
+if [[ -n "$TMUX" ]]; then
+  export TERM="tmux-256color"
+fi
 
 function d () {
   if [[ -n $1 ]]; then
@@ -184,6 +190,7 @@ compdef _dirs d
 export PATH=$PATH:/home/chad/sidecar/scripts
 export PATH=$PATH:/home/chad/.local/bin
 export PATH=$PATH:/home/chad/go/bin
+export PATH=$PATH:/usr/local/go/bin
 export EDITOR='nvim'
 typeset -U path
 
@@ -204,14 +211,14 @@ alias m7="minicom -D /dev/ttyUSB7"
 
 # ----Rcom -----
 
-alias r0="rcom -n -d /dev/ttyUSB0"
-alias r1="rcom -n -d /dev/ttyUSB1"
-alias r2="rcom -n -d /dev/ttyUSB2"
-alias r3="rcom -n -d /dev/ttyUSB3"
-alias r4="rcom -n -d /dev/ttyUSB4"
-alias r5="rcom -n -d /dev/ttyUSB5"
-alias r6="rcom -n -d /dev/ttyUSB6"
-alias r7="rcom -n -d /dev/ttyUSB7"
+alias r0="rcom -d /dev/ttyUSB0"
+alias r1="rcom -d /dev/ttyUSB1"
+alias r2="rcom -d /dev/ttyUSB2"
+alias r3="rcom -d /dev/ttyUSB3"
+alias r4="rcom -d /dev/ttyUSB4"
+alias r5="rcom -d /dev/ttyUSB5"
+alias r6="rcom -d /dev/ttyUSB6"
+alias r7="rcom -d /dev/ttyUSB7"
 
 # ---- OneDrive ----
 export onedrive="/home/chad/OneDrive/"
