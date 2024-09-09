@@ -22,7 +22,6 @@ local M = {
         -- Useful for getting pretty icons, but requires a Nerd Font.
         { 'nvim-tree/nvim-web-devicons',            enabled = vim.g.have_nerd_font },
         { 'nvim-telescope/telescope-project.nvim' },
-
     },
     config = function()
         -- Telescope is a fuzzy finder that comes with a lot of different things that
@@ -46,7 +45,7 @@ local M = {
 
         -- [[ Configure Telescope ]]
         -- See `:help telescope` and `:help telescope.setup()`
-        local project_actions = require("telescope._extensions.project.actions")
+        local project_actions = require 'telescope._extensions.project.actions'
         require('telescope').setup {
             -- You can put your default mappings / updates / etc. in here
             --  All the info you're looking for is in `:help telescope.setup()`
@@ -64,15 +63,15 @@ local M = {
                 },
                 ['project'] = {
                     hidden_files = true, -- default: false
-                    theme = "dropdown",
-                    order_by = "asc",
-                    search_by = "title",
+                    theme = 'dropdown',
+                    order_by = 'asc',
+                    search_by = 'title',
                     sync_with_nvim_tree = false, -- default false
                     -- default for on_project_selected = find project files
                     on_project_selected = function(prompt_bufnr)
                         -- Do anything you want in here. For example:
                         project_actions.change_working_directory(prompt_bufnr, true)
-                    end
+                    end,
                 },
             },
         }
@@ -81,8 +80,6 @@ local M = {
         pcall(require('telescope').load_extension, 'fzf')
         pcall(require('telescope').load_extension, 'ui-select')
         pcall(require('telescope').load_extension, 'project')
-
-
 
         -- See `:help telescope.builtin`
         local builtin = require 'telescope.builtin'

@@ -179,7 +179,7 @@ local M = {
             -- tsserver = {},
             pyright = {},
             clangd = {
-                cmd = { "clangd", "--pretty" },
+                cmd = { "clangd", "--pretty", "--query-driver=/home/chad/wifi6/master/openwrt/staging_dir/toolchain-arm_cortex-a7_gcc-5.2.0_musl-1.1.16_eabi/bin/arm-openwrt-linux-gcc" },
                 -- TODO: Could include cmd, but not sure those were all relevant flags.
                 --    looks like something i would have added while i was floundering
                 init_options = { clangdFileStatus = true },
