@@ -24,7 +24,7 @@ Actually I never use it. But it seems very powerful.
 Blink a while on where your cursor jump to. It's really useful.
 
 **colorscheme.lua**
-Find your favorite sheme and put it here.
+Find your favorite scheme and put it here.
 
 **comment**
 Detect filetype and decide how to comment a line. Really useful.
@@ -63,6 +63,7 @@ Stink the function name on the top of windows.
 
 **treesitter**
 Neovim built-in AST(Abstract Syntax Tree). Provide basic highlight. There's a lot plugin based on AST.
+Slow down.
 
 **nvim-cmp**
 
