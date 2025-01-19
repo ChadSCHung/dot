@@ -30,11 +30,11 @@ exec --no-startup-id dex --autostart --environment i3
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
-bindsym $mod2+l exec --no-startup-id i3lock -i /home/chad/Pictures/wallpaper/man_on_toilet.png
+bindsym $mod2+l exec --no-startup-id i3lock -i ~/Pictures/danwua_danger.jpg -C
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
-# exec --no-startup-id nm-applet
+exec --no-startup-id nm-applet
 exec --no-startup-id fcitx5 -d
 
 # Use pactl to adjust volume in PulseAudio.
@@ -52,13 +52,16 @@ floating_modifier $mod
 tiling_drag modifier titlebar
 
 # start a terminal
-bindsym $mod+Return exec wezterm
+bindsym $mod+Return exec ghostty
 
 # kill focused window
 bindsym $mod+q kill
 
+# detect and change monitor for laptop+monitor
+bindsym $mod+w exec hdmi_detect
+
 # start dmenu (a program launcher)
-bindsym $mod+d exec --no-startup-id dmenu_run
+bindsym $mod+d exec --no-startup-id rofi -show drun -theme gruvbox-dark -font "Hack Nerd Font" -terminal wezterm
 # A more modern dmenu replacement is rofi:
 # bindcode $mod+40 exec "rofi -modi drun,run -show drun"
 # There also is i3-dmenu-desktop which only displays applications shipping a
@@ -139,6 +142,7 @@ bindsym $mod2+7 workspace number $ws7
 bindsym $mod2+8 workspace number $ws8
 bindsym $mod2+9 workspace number $ws9
 bindsym $mod2+0 workspace number $ws10
+bindsym $mod2+n workspace back_and_forth
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace number $ws1
@@ -186,10 +190,13 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+# screenshot
+bindsym $mod2+s exec --no-startup-id flameshot gui
+
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-exec_always feh --bg-fill ~/Pictures/wallpaper/cyberpunkcycle.jpg
-exec_always ~/.config/polybar/launch.sh --blocks &
+exec_always feh --randomize --bg-fill ~/Pictures/wallpaper/*
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # class                 border  backgr. text    indicator child_border
 client.focused          #4c7899 #285577 #ffffff #2e9ef4   #285577
