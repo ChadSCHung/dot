@@ -40,9 +40,11 @@ export NVM_DIR="$HOME/.nvm"
 # vim-mode
 bindkey -v
 bindkey -M viins 'jk' vi-cmd-mode
+bindkey -M viins '^p' history-beginning-search-backward
+bindkey -M viins '^n' history-beginning-search-forward
+bindkey -M vicmd '^p' history-beginning-search-backward
+bindkey -M vicmd '^n' history-beginning-search-forward
 
-bindkey -M vicmd 'k' history-search-backward
-bindkey -M vicmd 'j' history-search-forward
 bindkey '^Y' autosuggest-accept
 
 # ---- FZF -----
