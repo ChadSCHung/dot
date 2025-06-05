@@ -1,0 +1,20 @@
+[Unit]
+Description=Redsocks transparent proxy service
+After=network.target
+
+[Service]
+Type=simple
+
+# Apply iptables rules
+ExecStartPre=/usr/local/bin/redsocks_iptables.sh start
+
+# Start redsocks daemon
+ExecStart=/usr/bin/redsocks -c /etc/redsocks.conf
+
+# Remove iptables rules
+ExecStopPost=/usr/local/bin/redsocks_iptables.sh stop
+
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
